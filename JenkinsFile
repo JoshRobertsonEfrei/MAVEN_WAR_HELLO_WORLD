@@ -5,10 +5,19 @@ pipeline{
       jdk "JDK11" //Jenkins 11 installed, so used this. adding a comment.
     }
 
+
+     environment{
+        //Add Docker credentials here
+    }
+
     stages{
        stage('Maven Build') {
          steps {
-           echo 'Here you should trigger a maven build of your application using either bat(windows) or sh(linux)'
+           //echo 'Here you should trigger a maven build of your application using either bat(windows) or sh(linux)'
+
+            echo 'Starting the maven build'
+            sh  "mvn clean package"
+
          }
        }
        
