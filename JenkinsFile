@@ -6,9 +6,9 @@ pipeline{
     }
 
 
-     environment{
+   //  environment{
         //Add Docker credentials here
-    }
+   // }
 
     stages{
        stage('Maven Build') {
