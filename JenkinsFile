@@ -6,9 +6,10 @@ pipeline{
     }
 
 
-   //  environment{
+     environment{
         //Add Docker credentials here
-   // }
+        DOCKER_BUH_CREDENTIALS = credentials('docker-hub-creds')
+      }
 
     stages{
        stage('Maven Build') {
