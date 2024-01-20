@@ -9,7 +9,9 @@
          state: present
     
     - name: Download Docker repository file using the get_url
-      shell: sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+        get_url:
+               url: https://download.docker.com/linux/centos/docker-ce.repo
+               dest: /etc/yum.repos.d/docker-ce.repo
 
     - name: Install Docker packages (engine) using yum module, reference https://docs.docker.com/engine/install/centos/#installation-methods
       yum:
