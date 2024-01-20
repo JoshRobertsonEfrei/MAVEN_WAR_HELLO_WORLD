@@ -23,9 +23,9 @@
 
     - name: Start Docker service using the systemd module
       systemd:
-      name: docker
-      state: started
-      enabled: yes
+        name: docker
+        state: started
+        enabled: yes
 
 
 
@@ -37,7 +37,6 @@
 - name: Deploy Docker Container
   hosts: linuxclient1
   become: true
-
 
   tasks:
     - name: Pull image and create the container using docker_container
