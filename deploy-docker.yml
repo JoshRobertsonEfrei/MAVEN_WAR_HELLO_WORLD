@@ -33,16 +33,29 @@
     #skipped bc logged in with token already..    
    # - name: log into docker hub registry using the docker_login module
 
+
 - name: Deploy Docker Container
   hosts: linuxclient1
   become: true
 
 
+  tasks:
     - name: Pull image and create the container using docker_container
-
-
-
-
-    
-    
+      docker_image:
+        name: joshrefrei/devopsfinal:latest
+        source: pull
+        
     - name: Start the container using docker_container
+      docker_container:
+        name: tomcat_devops
+        image: joshrefrei/devopsfinal:latest
+        state: started
+        tty: true
+        auto_remove: true
+        ports:
+          - "8080:8080"
+
+
+
+    
+
