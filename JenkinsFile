@@ -2,6 +2,7 @@ pipeline{
     agent any
     tools {
       maven 'MVN_HOME'
+      jdk "JDK11" //Jenkins 11 installed, so used this. adding a comment.
     }
 
     stages{
