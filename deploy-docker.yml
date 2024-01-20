@@ -33,7 +33,31 @@
         enabled: yes
 
 
+# Python Install Start
 
+    - name: Install Python
+      yum:
+        name:
+          - python
+        state: present      
+
+    - name: Download get-pip.py
+      get_url:
+        url: https://bootstrap.pypa.io/pip/2.7/get-pip.py
+        dest: /tmp/get-pip.py
+
+    - name: Install pip
+      command: python /tmp/get-pip.py
+
+    - name: Upgrade pip
+      command: pip install --upgrade pip
+
+    - name: Install docker-SDK
+      pip:
+        name: docker
+
+
+$ Python Install End
 
     #skipped bc logged in with token already..    
    # - name: log into docker hub registry using the docker_login module
