@@ -8,7 +8,7 @@ pipeline{
 
      environment{
         //Add Docker credentials here
-        DOCKER_BUH_CREDENTIALS = credentials('docker-hub-creds')
+        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-creds')
       }
 
     stages{
