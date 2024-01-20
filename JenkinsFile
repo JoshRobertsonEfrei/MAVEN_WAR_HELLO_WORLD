@@ -34,17 +34,25 @@ pipeline{
         
       stage('DockerHub Push'){
             steps{
-                echo 'You should first login to your github account using the withCredentials synatx'
-                echo 'And for that you need to create the appropriate credentials to access the github account in Jenkins'
-                echo 'Then you need to push this image to the public registry dockerhub into your account'
-                echo 'Use the docker push command'
+                //echo 'You should first login to your github account using the withCredentials synatx'
+                //echo 'And for that you need to create the appropriate credentials to access the github account in Jenkins'
+                //echo 'Then you need to push this image to the public registry dockerhub into your account'
+                //echo 'Use the docker push command'
+
+                echo 'Docker Credentials for Push'
+                sh "sudo docker login -u ${DOCKER_HUB_CREDENTIALS_USR} -p ${DOCKER_HUB_CREDENTIALS_PSW}"
+                echo 'Docker Push'
+                sh "sudo docker push joshrefrei/devopsfinal:latest"
+
             }
         }
   
       stage('Docker Deploy'){
             steps{
-                echo 'You should use the ansiblePlaybook syntax in order to call your playbook'
-                echo 'But before that you need to create an agent in order to execute the playbook on the Ansible controle node machine'
+                echo 'Docker Deploy'
+                sh "ansible-playbook deploy-docker.yml"
+                //echo 'You should use the ansiblePlaybook syntax in order to call your playbook'
+                //echo 'But before that you need to create an agent in order to execute the playbook on the Ansible controle node machine'
             }
         }        
     }
