@@ -16,17 +16,20 @@ pipeline{
            //echo 'Here you should trigger a maven build of your application using either bat(windows) or sh(linux)'
 
             echo 'Starting the maven build'
-            sh  "mvn clean package"
+            sh  "mvn clean package" // Seemed to work!
 
          }
        }
        
       stage('Docker Build'){
             steps{
-                echo 'In this step you should build your docker image using the docker build command'
-                echo 'So you need to build an image from the WAR that you generated previously'
-                echo 'Remember that starting point of your image should be tomcat in order to serve the application on the web'
-            }
+                //echo 'In this step you should build your docker image using the docker build command'
+                //echo 'So you need to build an image from the WAR that you generated previously'
+                //echo 'Remember that starting point of your image should be tomcat in order to serve the application on the web'
+                 
+                 echo 'Building the Docker file'
+                 sh "docker build -t joshrefrei/devopsfinal ."
+                 }
         }
         
       stage('DockerHub Push'){
