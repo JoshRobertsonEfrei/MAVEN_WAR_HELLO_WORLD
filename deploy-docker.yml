@@ -9,10 +9,22 @@
          state: present
     
     - name: Download Docker repository file using the get_url
+      shell: sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
 
     - name: Install Docker packages (engine) using yum module, reference https://docs.docker.com/engine/install/centos/#installation-methods
+      yum:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: present
+
 
     - name: Start Docker service using the systemd module
+
         
     - name: log into docker hub registry using the docker_login module
 
