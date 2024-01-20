@@ -4,7 +4,10 @@
   become_user: root
   tasks:
     - name: Install yum-utils (use the yum module)
-
+      yum:
+         name: yum-utils
+         state: present
+    
     - name: Download Docker repository file using the get_url
 
     - name: Install Docker packages (engine) using yum module, reference https://docs.docker.com/engine/install/centos/#installation-methods
